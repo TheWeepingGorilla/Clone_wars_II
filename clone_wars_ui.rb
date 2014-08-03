@@ -45,8 +45,10 @@ def list_clones
   linespace
 end
 
-# I know player_attack is ugly code, but I needed to wrap this project up,
+# I know player_attack & computer_attack should be refactored,
+# but I needed to wrap this project up
 # so I did something I knew would work.
+# I bit off more than I could chew here :-(.
 
 def player_attack
   linespace
@@ -134,7 +136,7 @@ def player_attack
       end
       puts "#{@player_scarlets} of your Scarlets and #{@comp_bills} of their Bills are left."
     end
-    elsif ((player_choice == "I") && (@player_bills >= 1))
+  elsif ((player_choice == "I") && (@player_bills >= 1))
     choice = rand(1..4)
     if choice == 1
       @comp_brads= @comp_brads - battle(@player_bills,@comp_brads)
@@ -167,72 +169,122 @@ def player_attack
   end
 end
 
-
-
-
-
-#     puts "What type will you fight? [(B)rad,(A)ngelena,(S)carlet,B(i)ll]"
-#     linespace
-#     defender = gets.chomp.upcase
-
-#     @comp_brads= @comp_brads - battle(@player_brads,@comp_brads)
-#     if @comp_brads < 0
-#       @comp_brads = 0
-#     end
-#     puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
-#   elsif ( (battler == "A") && (@player_angelenas >= 1) )
-#     @comp_angelenas = @comp_angelenas - battle(@player_angelenas,@comp_angelenas)
-#     if @comp_angelenas < 0
-#       @comp_angelenas = 0
-#     end
-#     puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
-#   elsif ( (battler == "S") && (@player_scarlets >= 1) )
-#     @comp_scarlets = @comp_scarlets - battle(@player_scarlets,@comp_scarlets)
-#     if @comp_scarlets < 0
-#       @comp_scarlets = 0
-#     end
-#     puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
-#   elsif ( (battler == "I") && (@player_bills >= 1) )
-#     @comp_bills = @comp_bills - battle(@player_bills,@comp_bills)
-#     if @comp_bills < 0
-#       @comp_bills = 0
-#     end
-#     puts "#{@player_bills} of your Bills and #{@comp_bills} of their Bills are left."
-#   else
-#     system 'clear'
-#     puts "Invalid! Try again"
-#   end
-# end
-
 def computer_attack
   linespace
-  puts "The enemy strikes back!"
+  puts "The computer strikes back!"
   linespace
-  choice = rand(1..4)
-  if ( (choice == 1) && (@comp_brads >= 1) )
-    @player_brads = @player_brads - battle(@comp_brads,@player_brads)
-    if @player_brads < 0
-      @player_brads = 0
+  atk_choice = rand(1..4)
+  if atk_choice == 1
+    choice = rand(1..4)
+    if choice == 1
+      @player_brads= @player_brads - battle(@comp_brads, @player_brads)
+      if @player_brads < 0
+        @player_brads = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
+    elsif choice == 2
+      @player_angelenas= @player_angelenas - battle(@comp_brads,@player_angelenas)
+      if @player_angelenas < 0
+        @player_angelenas = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_brads} of their Brads are left."
+    elsif choice == 3
+      @player_scarlets= @player_scarlets - battle(@comp_scarlets,@player_scarlets)
+      if @player_scarlets < 0
+        @player_scarlets = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_brads} of their Brads are left."
+    elsif choice == 4
+      @player_bills= @player_bills - battle(@comp_bills,@player_bills)
+      if @player_bills < 0
+        @player_bills = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_brads} of their Brads are left."
     end
-    puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
-  elsif ( (choice == 2) && (@comp_angelenas >= 1) )
-    @player_angelenas = @player_angelenas - battle(@comp_angelenas,@player_angelenas)
-    if @player_angelenas < 0
-      @player_angelenas = 0
+  elsif atk_choice == 2
+    choice = rand(1..4)
+    if choice == 1
+      @player_brads= @player_brads - battle(@comp_angelenas,@player_brads)
+      if @player_brads < 0
+        @player_brads = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 2
+      @player_angelenas= @player_angelenas - battle(@comp_angelenas,@player_angelenas)
+      if @player_angelenas < 0
+        @player_angelenas = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 3
+      @player_scarlets= @player_scarlets - battle(@comp_angelenas,@player_scarlets)
+      if @player_scarlets < 0
+        @player_scarlets = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 4
+      @player_bills= @player_bills - battle(@comp_angelenas,@player_bills)
+      if @player_bills < 0
+        @player_bills = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_angelenas} of their Angelenas are left."
     end
-    puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
-  elsif ( (choice == 3) && (@comp_scarlets >= 1) )
-    @player_scarlets = @player_scarlets - battle(@comp_scarlets,@player_scarlets)
-    if @player_scarlets < 0
-      @player_scarlets = 0
+  elsif atk_choice == 3
+    choice = rand(1..4)
+    if choice == 1
+      @player_brads= @player_brads - battle(@comp_scarlets,@player_brads)
+      if @player_brads < 0
+        @player_brads = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 2
+      @player_angelenas= @player_angelenas - battle(@comp_scarlets,@player_angelenas)
+      if @player_angelenas < 0
+        @player_angelenas = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 3
+      @player_scarlets= @player_scarlets - battle(@comp_scarlets,@player_scarlets)
+      if @player_scarlets < 0
+        @player_scarlets = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 4
+      @player_bills= @player_bills - battle(@comp_scarlets,@player_bills)
+      if @player_bills < 0
+        @player_bills = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_scarlets} of their Scarlets are left."
     end
-    puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
-  elsif ( (choice == 4) && (@comp_bills >= 1) )
-    @player_bills = @player_bills - battle(@comp_bills,@player_bills)
-    if @player_bills < 0
-      @player_bills = 0
+  elsif atk_choice == 4
+    choice = rand(1..4)
+    if choice == 1
+      @player_brads= @player_brads - battle(@comp_bills,@player_brads)
+      if @player_brads < 0
+        @player_brads = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_bills} of their Bills are left."
+    elsif choice == 2
+      @player_angelenas= @player_angelenas - battle(@comp_bills,@player_angelenas)
+      if @player_angelenas < 0
+        @player_angelenas = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_bills} of their Bills are left."
+    elsif choice == 3
+      @player_scarlets= @player_scarlets - battle(@comp_bills,@player_scarlets)
+      if @player_scarlets < 0
+        @player_scarlets = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_bills} of their Bills are left."
+    elsif choice == 4
+      @player_bills= @player_bills - battle(@comp_bills,@player_bills)
+      if @player_bills < 0
+        @player_bills = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_bills} of their Bills are left."
     end
-    puts "#{@player_bills} of your Bills and #{@comp_bills} of their Bills are left."
+  else
+    system 'clear'
+    puts "Invalid! Try again"
   end
 end
 
@@ -308,10 +360,7 @@ def new_game
 end
 
 new_game
-player_attack
-
-# new_game
-# header
-# linespace
-# rules
-# main_menu
+header
+linespace
+rules
+main_menu
