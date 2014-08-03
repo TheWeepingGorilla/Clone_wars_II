@@ -45,65 +45,189 @@ def list_clones
   linespace
 end
 
+# I know player_attack is ugly code, but I needed to wrap this project up,
+# so I did something I knew would work.
+
 def player_attack
   linespace
   puts "What type of clone will you send into battle? [(B)rad,(A)ngelena,(S)carlet,B(i)ll]"
   linespace
-  battler = gets.chomp.upcase
-  if ( (battler == "B") && (@player_brads >= 1) )
-    @comp_brads= @comp_brads - battle(@player_brads,@comp_brads)
-    if @comp_brads < 0
-      @comp_brads = 0
+  player_choice = gets.chomp.upcase
+  if ((player_choice == "B") && (@player_brads >= 1))
+    choice = rand(1..4)
+    if choice == 1
+      @comp_brads= @comp_brads - battle(@player_brads,@comp_brads)
+      if @comp_brads < 0
+        @comp_brads = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
+    elsif choice == 2
+      @comp_angelenas= @comp_angelenas - battle(@player_brads,@comp_angelenas)
+      if @comp_angelenas < 0
+        @comp_angelenas = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 3
+      @comp_scarlets= @comp_scarlets - battle(@player_brads,@comp_scarlets)
+      if @comp_scarlets < 0
+        @comp_scarlets = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 4
+      @comp_bills= @comp_bills - battle(@player_brads,@comp_bills)
+      if @comp_bills < 0
+        @comp_bills = 0
+      end
+      puts "#{@player_brads} of your Brads and #{@comp_bills} of their Bills are left."
     end
-    puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
-  elsif ( (battler == "A") && (@player_angelenas >= 1) )
-    @comp_angelenas = @comp_angelenas - battle(@player_angelenas,@comp_angelenas)
-    if @comp_angelenas < 0
-      @comp_angelenas = 0
+  elsif ((player_choice == "A") && (@player_angelenas >= 1))
+    choice = rand(1..4)
+    if choice == 1
+      @comp_brads= @comp_brads - battle(@player_angelenas,@comp_brads)
+      if @comp_brads < 0
+        @comp_brads = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_brads} of their Brads are left."
+    elsif choice == 2
+      @comp_angelenas= @comp_angelenas - battle(@player_angelenas,@comp_angelenas)
+      if @comp_angelenas < 0
+        @comp_angelenas = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 3
+      @comp_scarlets= @comp_scarlets - battle(@player_angelenas,@comp_scarlets)
+      if @comp_scarlets < 0
+        @comp_scarlets = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 4
+      @comp_bills= @comp_bills - battle(@player_angelenas,@comp_bills)
+      if @comp_bills < 0
+        @comp_bills = 0
+      end
+      puts "#{@player_angelenas} of your Angelenas and #{@comp_bills} of their Bills are left."
     end
-    puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
-  elsif ( (battler == "S") && (@player_scarlets >= 1) )
-    @comp_scarlets = @comp_scarlets - battle(@player_scarlets,@comp_scarlets)
-    if @comp_scarlets < 0
-      @comp_scarlets = 0
+  elsif ((player_choice == "S") && (@player_scarlets >= 1))
+    choice = rand(1..4)
+    if choice == 1
+      @comp_brads= @comp_brads - battle(@player_scarlets,@comp_brads)
+      if @comp_brads < 0
+        @comp_brads = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_brads} of their Brads are left."
+    elsif choice == 2
+      @comp_angelenas= @comp_angelenas - battle(@player_scarlets,@comp_angelenas)
+      if @comp_angelenas < 0
+        @comp_angelenas = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 3
+      @comp_scarlets= @comp_scarlets - battle(@player_scarlets,@comp_scarlets)
+      if @comp_scarlets < 0
+        @comp_scarlets = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 4
+      @comp_bills= @comp_bills - battle(@player_scarlets,@comp_bills)
+      if @comp_bills < 0
+        @comp_bills = 0
+      end
+      puts "#{@player_scarlets} of your Scarlets and #{@comp_bills} of their Bills are left."
     end
-    puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
-  elsif ( (battler == "I") && (@player_bills >= 1) )
-    @comp_bills = @comp_bills - battle(@player_bills,@comp_bills)
-    if @comp_bills < 0
-      @comp_bills = 0
+    elsif ((player_choice == "I") && (@player_bills >= 1))
+    choice = rand(1..4)
+    if choice == 1
+      @comp_brads= @comp_brads - battle(@player_bills,@comp_brads)
+      if @comp_brads < 0
+        @comp_brads = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_brads} of their Brads are left."
+    elsif choice == 2
+      @comp_angelenas= @comp_angelenas - battle(@player_bills,@comp_angelenas)
+      if @comp_angelenas < 0
+        @comp_angelenas = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_angelenas} of their Angelenas are left."
+    elsif choice == 3
+      @comp_scarlets= @comp_scarlets - battle(@player_bills,@comp_scarlets)
+      if @comp_scarlets < 0
+        @comp_scarlets = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_scarlets} of their Scarlets are left."
+    elsif choice == 4
+      @comp_bills= @comp_bills - battle(@player_bills,@comp_bills)
+      if @comp_bills < 0
+        @comp_bills = 0
+      end
+      puts "#{@player_bills} of your Bills and #{@comp_bills} of their Bills are left."
     end
-    puts "#{@player_bills} of your Bills and #{@comp_bills} of their Bills are left."
   else
     system 'clear'
     puts "Invalid! Try again"
   end
 end
 
+
+
+
+
+#     puts "What type will you fight? [(B)rad,(A)ngelena,(S)carlet,B(i)ll]"
+#     linespace
+#     defender = gets.chomp.upcase
+
+#     @comp_brads= @comp_brads - battle(@player_brads,@comp_brads)
+#     if @comp_brads < 0
+#       @comp_brads = 0
+#     end
+#     puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
+#   elsif ( (battler == "A") && (@player_angelenas >= 1) )
+#     @comp_angelenas = @comp_angelenas - battle(@player_angelenas,@comp_angelenas)
+#     if @comp_angelenas < 0
+#       @comp_angelenas = 0
+#     end
+#     puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
+#   elsif ( (battler == "S") && (@player_scarlets >= 1) )
+#     @comp_scarlets = @comp_scarlets - battle(@player_scarlets,@comp_scarlets)
+#     if @comp_scarlets < 0
+#       @comp_scarlets = 0
+#     end
+#     puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
+#   elsif ( (battler == "I") && (@player_bills >= 1) )
+#     @comp_bills = @comp_bills - battle(@player_bills,@comp_bills)
+#     if @comp_bills < 0
+#       @comp_bills = 0
+#     end
+#     puts "#{@player_bills} of your Bills and #{@comp_bills} of their Bills are left."
+#   else
+#     system 'clear'
+#     puts "Invalid! Try again"
+#   end
+# end
+
 def computer_attack
   linespace
   puts "The enemy strikes back!"
   linespace
   choice = rand(1..4)
-  if ( (choice = 1) && (@comp_brads >= 1) )
+  if ( (choice == 1) && (@comp_brads >= 1) )
     @player_brads = @player_brads - battle(@comp_brads,@player_brads)
     if @player_brads < 0
       @player_brads = 0
     end
     puts "#{@player_brads} of your Brads and #{@comp_brads} of their Brads are left."
-  elsif ( (choice = 2) && (@comp_angelenas >= 1) )
+  elsif ( (choice == 2) && (@comp_angelenas >= 1) )
     @player_angelenas = @player_angelenas - battle(@comp_angelenas,@player_angelenas)
     if @player_angelenas < 0
       @player_angelenas = 0
     end
     puts "#{@player_angelenas} of your Angelenas and #{@comp_angelenas} of their Angelenas are left."
-  elsif ( (choice = 3) && (@comp_scarlets >= 1) )
+  elsif ( (choice == 3) && (@comp_scarlets >= 1) )
     @player_scarlets = @player_scarlets - battle(@comp_scarlets,@player_scarlets)
     if @player_scarlets < 0
       @player_scarlets = 0
     end
     puts "#{@player_scarlets} of your Scarlets and #{@comp_scarlets} of their Scarlets are left."
-  elsif ( (choice = 4) && (@comp_bills >= 1) )
+  elsif ( (choice == 4) && (@comp_bills >= 1) )
     @player_bills = @player_bills - battle(@comp_bills,@player_bills)
     if @player_bills < 0
       @player_bills = 0
@@ -184,7 +308,10 @@ def new_game
 end
 
 new_game
-header
-linespace
-rules
-main_menu
+player_attack
+
+# new_game
+# header
+# linespace
+# rules
+# main_menu
